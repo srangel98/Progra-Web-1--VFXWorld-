@@ -1,3 +1,7 @@
+body{
+  background-color: rgb(22, 21, 21);
+}
+
 .container-fluid {
   font-family: "Noto Sans KR", sans-serif;
 }
@@ -7,14 +11,30 @@
   height: 50vh;
 }
 
-.card-title {
-  color: aliceblue;
+.container-fluid>.card {
+  margin: 10px;
 }
 
-.card-text {
-  color: rgb(204, 208, 212);
+
+
+.card{
+  margin-left: 33%;
 }
 
-p>small {
-  color: white;
+#carouselExampleCaptions {
+  margin-bottom: 10px;
 }
+
+.lastnews{
+  text-align:center;
+  color:gray;
+  background-color: rgb(39, 39, 39);
+  margin-bottom:10px;
+}
+
+.btn-lastnews{
+  text-align:center;
+}
+
+
+
