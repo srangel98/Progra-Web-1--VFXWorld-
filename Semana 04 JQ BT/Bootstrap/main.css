@@ -16,7 +16,6 @@ body{
 }
 
 
-
 .card{
   margin-left: 33%;
 }
@@ -36,5 +35,14 @@ body{
   text-align:center;
 }
 
+.alinear{
+  text-align:center;
+}
+
+.georgiaNTR{
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+ font-weight: bolder;
+
+} 
 
 
