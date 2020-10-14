@@ -37,10 +37,45 @@ body{
 
 .lastnews-body{
   color: rgb(170, 170, 170);
- 
 }
 
 .lastnews-cards{
   background-color: rgb(68, 56, 56);
 }
 
+.img-logo{
+  width: 40px;
+}
+
+.btn-bd, .btn-mp, .btn-rs, .btn-tckg, .btn-int {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.btn-bd:focus{
+  color:black;
+}
+
+.btn-mp:focus{
+  color:black;
+}
+
+.btn-rs:focus{
+  color:black;
+}
+
+.btn-tckg:focus{
+  color:black;
+}
+
+.btn-int:focus{
+  color:black;
+}
+
+.card-img-filter{
+  filter:brightness(0.5);
+}
+
+.section-lastnews{
+  margin-bottom:50px;
+}

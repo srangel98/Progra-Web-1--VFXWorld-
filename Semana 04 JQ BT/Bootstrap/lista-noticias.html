@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+    <!--Navbar-->
+    <div class="container-fluid ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark georgiaNTR">
+          <a class="navbar-brand" href="#">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/664e6561547281.5a71f50c9077b.png"
+              width="40" height="47" alt="" loading="lazy" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search" />
+            <button type="button" class="btn btn-outline-secondary" type="submit">Buscar</button>
+          </form>
+          <div class="collapse navbar-collapse" style="padding-top:9px; "  id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
+              </li>
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Categorías
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">VFX Breakdown</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Matte painting</a>
+                  <a class="dropdown-item" href="#">Rotoscope</a>
+                  <a class="dropdown-item" href="#">Tracking</a>
+                  <a class="dropdown-item" href="#">3D Integration</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Cuenta</a>
+              </li>
+              <li class="nav-item dropdown form-login" style="margin-left: 850px;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img src="https://static.thenounproject.com/png/3095687-200.png"
+                    width="33" height="33" alt="33" loading="lazy" />
+                </a>
+                <div class="dropdown-menu border-primary rounded">
+                  <form class="px-4 py-3">
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail1">Correo</label>
+                      <input type="email" class="form-control" id="exampleDropdownFormEmail1"
+                        placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormPassword1">Contraseña</label>
+                      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label" for="dropdownCheck">
+                          Recordar
+                        </label>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                  </form>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">¿No tienes cuenta? Regístrate</a>
+                  <a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+
+      <!--Noticias-->
+      <div class="container text-center">
+      <button type="button" class="btn btn-dark btn-bd">VFX Breakdown</button>
+      <button type="button" class="btn btn-dark btn-mp">Matte painting</button>
+      <button type="button" class="btn btn-dark btn-rs">Rotoscope</button>
+      <button type="button" class="btn btn-dark btn-tckg">Tracking</button>
+      <button type="button" class="btn btn-dark btn-int">3D Integration</button>
+    </div>
+
+    <section class="container">
+        <div class="row section-lastnews">
+            <div class="col-12 text-center">
+                <h2 class="text-warning">Últimas Noticias</h2>
+                <p class="text-muted">VFX World</p>
+            </div>
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://i.ytimg.com/vi/VWB6lnnYFlc/maxresdefault.jpg" alt="first" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                        <h4>Featured post</h4>
+                        <p class="card-title"> class="card-text"Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://s3.amazonaws.com/thinkific-import/102609/PjiJnMOvTPtfFH6zh75A_Artboard%2013.png" alt="second" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                        <h4 class="card-title">Featured post</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 40 mins ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://nofilmschool.com/sites/default/files/styles/facebook/public/2-vfx-3.jpeg?itok=AqmXvOA4" alt="third" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white">
+                        <h4 class="card-title">Featured post</h4>
+                        <p class="card-text"></p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 1 hour ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+
+        </div>
+        <div class="row section-lastnews">
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://i.ytimg.com/vi/VWB6lnnYFlc/maxresdefault.jpg" alt="first" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                        <h4>Featured post</h4>
+                        <p class="card-title"> class="card-text"Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://s3.amazonaws.com/thinkific-import/102609/PjiJnMOvTPtfFH6zh75A_Artboard%2013.png" alt="second" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                        <h4 class="card-title">Featured post</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 40 mins ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+
+            <article class="col-4">
+                <div class="card bg-light">
+                    <img src="https://nofilmschool.com/sites/default/files/styles/facebook/public/2-vfx-3.jpeg?itok=AqmXvOA4" alt="third" class="card-img card-img-filter" height="250">
+                    <div class="card-img-overlay text-white">
+                        <h4 class="card-title">Featured post</h4>
+                        <p class="card-text"></p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in molestiae tempore a fuga quo?</p>
+                        <p class="card-text">Last updated 1 hour ago</p>
+                        <a href="#" class="text-reset">Leer más</a>
+                    </div>
+                    
+                </div>
+            </article>
+    </section>
+    <div class="container text-center" style="margin-bottom:20px;">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary "><<</button>
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">>></button>
+      </div>
+</div>
+
+<!-- Footer -->
+<footer style="background-color:rgb(52, 58, 64);" class="page-footer font-small text-white pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+        <!-- Grid row -->
+        <div class="row">
+          <div class="col-md-1 mt-md-0 mt-3">
+  
+            <!-- Content -->
+           
+        </div>
+            <!-- Grid column -->
+            <div class="col-md-5 mt-md-0 mt-3">
+  
+                <!-- Content -->
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/664e6561547281.5a71f50c9077b.png"
+                width="70" height="77" alt="" loading="lazy" /></a>
+                <h5>VFX WORLD</h5>
+            </div>
+            <!-- Grid column -->
+  
+            <hr class="clearfix w-100 d-md-none pb-3">
+  
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+              </div>
+              <div class="col-md-3 mb-md-0 mb-3">
+                <!-- Links -->
+                <div class="mb-3">
+                    <h5 class="">Vistanos en</h5>
+                    <img class="mr-3" src="Imagenes/facebook.png" width="40px" height="auto" alt="">
+                    <img class="mr-3" src="Imagenes/youtube.png" width="40px" height="auto" alt="">
+                    <img src="Imagenes/twitter.png" width="40px" height="auto" alt="">
+                </div>
+                <div>Icons made by
+                    <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik
+                    </a> from
+                    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+                    </a>
+                </div>
+  
+            </div>
+  
+        </div>
+    </footer>
+
+</body>
+</html>
