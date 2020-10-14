@@ -23,7 +23,7 @@
 
 <body>
   <!-- Navbar -->
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark georgiaNTR">
       <a class="navbar-brand" href="#">
         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/664e6561547281.5a71f50c9077b.png"
@@ -41,9 +41,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Herramientas</a>
-          </li>
+         
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -59,9 +57,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Qué mira</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Cuenta</a>
           </li>
-          <li class="nav-item dropdown form-login" style="margin-left: 700px;">
+          <li class="nav-item dropdown form-login" style="margin-left: 850px;">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <img src="https://static.thenounproject.com/png/3095687-200.png"
@@ -141,75 +139,140 @@
   </div>
   <!-- Noticias recientes (banner) -->
   <div class="container">
-    <div class="lastnews border rounded-pill border-dark">
+    <div class="banner border rounded-pill border-dark">
       <h2> Noticias recientes </h2>
     </div>
-  </div>
+</div>
 
   <!-- Noticias recientes (cards) -->
-  <div class="card-deck mx-auto alinear" style="max-width: 75%;">
-    <div class="card text-white bg-dark mb-3 border-black">
-      <img src="https://cea.langara.ca/wp-content/uploads/2019/12/CEA-VFX-Student-work-PATSWITCH-JARITNGARM-mobile.jpg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci fuga corrupti fugiat,
-          voluptas quasi id, ut nobis consectetur odit commodi eum officiis aspernatur doloremque nulla fugit inventore,
-          hic dolorum non!</p>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+  <div class="container-fluid">
+  <div class="row mb-3"  >
+    <div class="col-md-4 ">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative lastnews-cards" >
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0 text-white">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto lastnews-body">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex eveniet necessitatibus optio officiis neque aut amet enim soluta aspernatur animi!</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="https://i.ytimg.com/vi/VWB6lnnYFlc/maxresdefault.jpg" alt="Stardew-Valley" width="250" height="250" srcset="">
         </div>
       </div>
     </div>
-
-    <div class="card text-white bg-dark mb-3 border-black">
-      <img src="https://cea.langara.ca/wp-content/uploads/2019/12/CEA-VFX-Student-work-PATSWITCH-JARITNGARM-mobile.jpg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum culpa pariatur suscipit,
-          temporibus eligendi vel, molestiae, cupiditate animi sunt officia distinctio aspernatur aperiam sapiente
-          totam. Natus impedit aspernatur maiores dolores!</p>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+    <div class="col-md-4">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative lastnews-cards">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0 text-white">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="card-text mb-auto lastnews-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta doloribus quasi quisquam eius hic amet consectetur nobis temporibus cupiditate nemo.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="https://s3.amazonaws.com/thinkific-import/102609/PjiJnMOvTPtfFH6zh75A_Artboard%2013.png" alt="Stardew-Valley" width="250" height="250" srcset="">
         </div>
       </div>
     </div>
-
-    <div class="card text-white bg-dark mb-3 border-black">
-      <img src="https://cea.langara.ca/wp-content/uploads/2019/12/CEA-VFX-Student-work-PATSWITCH-JARITNGARM-mobile.jpg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure accusantium soluta
-          repudiandae magnam tenetur aliquid assumenda impedit eaque maxime dignissimos eligendi quas, libero possimus
-          odio aut. Voluptatibus asperiores quam maiores.</p>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+    <div class="col-md-4">
+      <div class="row no-gutters border border-white rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative lastnews-cards">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0 text-white">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="card-text mb-auto lastnews-body">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="https://nofilmschool.com/sites/default/files/styles/facebook/public/2-vfx-3.jpeg?itok=AqmXvOA4" alt="Stardew-Valley" width="250" height="250" srcset="">
         </div>
       </div>
     </div>
-
-    <div class="card text-white bg-dark mb-3 border-black">
-      <img src="https://cea.langara.ca/wp-content/uploads/2019/12/CEA-VFX-Student-work-PATSWITCH-JARITNGARM-mobile.jpg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam doloribus eos, quo incidunt
-          labore harum aut, accusamus quis repellat eaque possimus animi fuga veritatis repellendus consectetur illo
-          illum eum perferendis!</p>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-    </div>
-
   </div>
-
+</div>
   <!-- Noticias recientes (Botón) -->
   <div class="btn-lastnews">
     <button type="button" class="btn btn-secondary ">Ver más</button>
   </div>
+
+
+<div class="container">
+  <div class="banner border rounded-pill border-dark">
+    <h2> Los expertos recomiendan </h2>
+  </div>
+</div>
+
+<div class="container">
+<div class="row text-center">
+  <div class="col-lg-4">
+    <img src="Imagenes/after-effects.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+    <h2 class="text-white">Heading</h2>
+    <p class="lastnews-body">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+  </div><!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+    <img src="Imagenes/da-vinci-resolve.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+    <h2 class="text-white">Heading</h2>
+    <p class="lastnews-body">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+  </div><!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+    <img src="Imagenes/cinema-4d-logo.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+    <h2 class="text-white">Heading</h2>
+    <p class="lastnews-body">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+  </div><!-- /.col-lg-4 -->
+</div>
+</div>
+<!-- Footer -->
+<footer style="background-color:rgb(52, 58, 64);" class="page-footer font-small text-white pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+        <div class="col-md-1 mt-md-0 mt-3">
+
+          <!-- Content -->
+         
+      </div>
+          <!-- Grid column -->
+          <div class="col-md-5 mt-md-0 mt-3">
+
+              <!-- Content -->
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/664e6561547281.5a71f50c9077b.png"
+              width="70" height="77" alt="" loading="lazy" /></a>
+              <h5>VFX WORLD</h5>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+              <!-- Links -->
+              <div class="mb-3">
+                  <h5 class="">Vistanos en</h5>
+                  <img class="mr-3" src="Imagenes/facebook.png" width="40px" height="auto" alt="">
+                  <img class="mr-3" src="Imagenes/youtube.png" width="40px" height="auto" alt="">
+                  <img src="Imagenes/twitter.png" width="40px" height="auto" alt="">
+              </div>
+              <div>Icons made by
+                  <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik
+                  </a> from
+                  <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+                  </a>
+              </div>
+
+          </div>
+
+      </div>
+      <!-- Grid row -->
+
+
+
+</footer>
 </body>
 
 </html>

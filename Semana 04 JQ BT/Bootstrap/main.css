@@ -6,33 +6,23 @@ body{
   font-family: "Noto Sans KR", sans-serif;
 }
 
-.w-100 {
-  width: 100% !important;
-  height: 50vh;
-}
-
-.container-fluid>.card {
-  margin: 10px;
-}
 
 
-.card{
-  margin-left: 33%;
-}
 
 #carouselExampleCaptions {
   margin-bottom: 10px;
 }
 
-.lastnews{
+.banner{
   text-align:center;
   color:gray;
   background-color: rgb(39, 39, 39);
-  margin-bottom:10px;
+  margin-bottom:20px;
 }
 
 .btn-lastnews{
   text-align:center;
+  margin-bottom:10px;
 }
 
 .alinear{
@@ -45,4 +35,12 @@ body{
 
 } 
 
+.lastnews-body{
+  color: rgb(170, 170, 170);
+ 
+}
+
+.lastnews-cards{
+  background-color: rgb(68, 56, 56);
+}
 
