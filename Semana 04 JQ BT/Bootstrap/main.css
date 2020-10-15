@@ -79,3 +79,71 @@ body{
 .section-lastnews{
   margin-bottom:50px;
 }
+
+/* body {
+  font-family: Arial;
+  padding: 20px;
+  background: #1f1818;
+} */
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  /*float: left;*/
+  width: 100%;
+}
+
+.news-body{
+margin-left: 75px;
+margin-right: 75px;
+
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+.newsimg {
+  background-color: #aaa;
+  width: 500px;
+  height:400px;
+  margin-bottom: 15px;
+}
+
+/* Add a card effect for articles */
+.card-news {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.dp_div2{
+margin-top: 20px;
+margin-bottom: 20px;
+
+}
