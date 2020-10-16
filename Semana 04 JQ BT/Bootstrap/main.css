@@ -147,3 +147,32 @@ margin-top: 20px;
 margin-bottom: 20px;
 
 }
+
+.pb-cmnt-container {
+  font-family: Lato;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.pb-cmnt-textarea {
+  resize: none;
+  padding: 20px;
+  height: 130px;
+  width: 200%;
+  border: 1px solid #181616;
+  
+}
+
+.media .media-object { max-width: 100px; }
+
+
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before { 
+    content: '.'; 
+    margin-left: -2px; 
+    margin-right: 2px;
+}
+.media-replied .media-heading { padding-left: 6px; }
+
+
