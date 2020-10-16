@@ -87,13 +87,58 @@
                 <button type="submit" class="btn btn-primary">Ingresar</button>
               </form>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">¿No tienes cuenta? Regístrate</a>
-              <a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a>
+              <a class="dropdown-item registration" href="#" data-toggle="modal" data-target=".registration-modal">¿No tienes cuenta? Regístrate</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
+  </div>
+
+  <div class="modal fade registration-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        <div class="modal-body text-left">
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Nombre de Usuario</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Correo electrónico</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Contraseña | Confirmar contraseña</span>
+            </div>
+            <input type="text" class="form-control">
+            <input type="text" class="form-control">
+          </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Registrarse</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
   </div>
   <!-- Carousel -->
   <div class="container-fluid">
@@ -139,8 +184,8 @@
   </div>
   <!-- Noticias recientes (banner) -->
   <div class="container">
-    <div class="banner border rounded-pill border-dark">
-      <h2> Noticias recientes </h2>
+    <div class="banner border border-dark">
+      <h2 class="text-warning"> Noticias recientes </h2>
     </div>
 </div>
 
@@ -196,8 +241,8 @@
 
 
 <div class="container">
-  <div class="banner border rounded-pill border-dark">
-    <h2> Los expertos recomiendan </h2>
+  <div class="banner border  border-dark">
+    <h2 class="text-warning"> Los expertos recomiendan </h2>
   </div>
 </div>
 

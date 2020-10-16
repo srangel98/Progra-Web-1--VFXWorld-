@@ -15,7 +15,7 @@ body{
 
 .banner{
   text-align:center;
-  color:gray;
+  color:rgb(23, 31, 78);
   background-color: rgb(39, 39, 39);
   margin-bottom:20px;
 }
@@ -175,4 +175,32 @@ margin-bottom: 20px;
 }
 .media-replied .media-heading { padding-left: 6px; }
 
+.registration:hover{
+  color:blue;
+}
 
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #BCBCBC;
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #8BC34A;
+  transition: ease .6s;
+}
