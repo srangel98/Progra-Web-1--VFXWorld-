@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
-  <title>Editar Perfil</title>
+  <title>Perfil</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -171,42 +171,35 @@
 <div class="row text-white" style="margin-top:30px; margin-bottom:30px;">
     <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Favoritos</span>
-        <span class="badge badge-secondary badge-pill">5</span>
+        <span class="text-muted">Siguiendo</span>
+        <span class="badge badge-secondary badge-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h5 style="color: black;">Noticia 1</h5>
-            <small class="text-muted">Descripción corta</small>
+            <h5 style="color: black;">Persona 1</h5>
+            <small class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, consequatur.</small>
+            <br> </br>
+            <small class="text-muted">En: "El FVX en Hollywood"</small>
           </div>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h5 style="color: black;">Noticia 2</h5>
-            <small class="text-muted">Descripción corta</small>
+            <h5 style="color: black;">Persona 2</h5>
+            <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing.</small>
+            <br> </br>
+            <small class="text-muted">En: "El FVX en Hollywood"</small>
           </div>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h5 style="color: black;">Noticia 3</h5>
-            <small class="text-muted">Descripción corta</small>
+            <h5 style="color: black;">Persona 3</h5>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quos ducimus nostrum neque suscipit temporibus iste! Esse, corrupti. Reiciendis, sunt?</small>
+            <br> </br>
+            <small class="text-muted">En: "El FVX en Hollywood"</small>
           </div>
         </li>
-      </li>
-      <li class="list-group-item d-flex justify-content-between lh-condensed">
-        <div>
-          <h5 style="color: black;">Noticia 4</h5>
-          <small class="text-muted">Descripción corta</small>
-        </div>
-      </li>
-    </li>
-    <li class="list-group-item d-flex justify-content-between lh-condensed">
-      <div>
-        <h5 style="color: black;">Noticia 5</h5>
-        <small class="text-muted">Descripción corta</small>
-      </div>
-    </li>
+       
       </ul>
 <!-- 
       <form class="card p-2">
@@ -225,54 +218,28 @@
       <h4 class="mb-3">Información de la cuenta</h4>
       <form class="needs-validation" novalidate="">
 
-        <div class="mb-3">
+        <div class="mb-3" style="margin-top: 40px;">
           <label for="username">Nombre de Usuario</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required="">
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
+          <h6>Leo</h6>
         </div>
 
-        <div class="mb-3">
-          <label for="email">Correo electrónico <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
+        <div class="mb-3" style="margin-top: 10px;">
+          <label for="email">Correo electrónico</label>
+          <h6>dan_leo11@live.com.mx</h6>
         </div>
 
         <div class="row">
-          <div class="col-md-5 mb-3">
+          <div class="col-md-5 mb-3" style="margin-top: 10px;">
             <label for="country">País</label>
-            <select class="custom-select d-block w-100" id="country" required="">
-              <option value="">Choose...</option>
-              <option>United States</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
+            <h6>México</h6>
           </div>
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3" style="margin-top: 10px;">
             <label for="state">Estado</label>
-            <select class="custom-select d-block w-100" id="state" required="">
-              <option value="">Choose...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
+            <h6>Nuevo León</h6>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3 mb-3" style="margin-top: 10px;">
             <label for="zip">ID de usuario</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required="">
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
+            <h6>1687691</h6>
           </div>
         </div>
 
@@ -281,7 +248,7 @@
 
        
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Modificar</button>
+        <button class="btn btn-secondary btn-lg btn-block" type="submit">Editar perfil</button>
       </form>
     </div>
   </div>
