@@ -208,7 +208,7 @@
       </div>
     </li>
       </ul>
-      <button class="btn btn-primary btn-lg btn-block" type="submit">Crear noticia</button>
+      <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"  data-target=".doNews">Crear noticia</button>
     </div>
 
 
@@ -252,6 +252,63 @@
     </div>
   </div>
 
+</div>
+
+<div class="modal fade doNews" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Noticia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group">
+            <label for="newsTitle">Título de la noticia</label>
+            <input type="text" class="form-control" id="newsTitle"  placeholder="Título">
+          </div>
+          <div class="form-group">
+            <label for="newsDescription">Descripción de la noticia</label>
+            <input type="text" class="form-control" id="newsDescription"  placeholder="Descripción">
+          </div>
+          <div class="form-group">
+            <label for="newsHeaderImage">Imagen de encabezado</label>
+            <input type="file" class="form-control-file" id="newsHeaderImage">
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group text-center">
+            <label for="newsBody">Cuerpo de la noticia</label>
+            <textarea type="text" class="form-control textarea-newsBody" id="news"  placeholder="Cuerpo"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="newsBodyImage">Imagen de cuerpo</label>
+            <input type="file" class="form-control-file" id="newsBodyImage">
+          </div>
+          <div class="form-group text-center">
+            <label for="newsBodyOptional">Cuerpo de la noticia <small>(Opcional)</small></label>
+            <textarea type="text" class="form-control textarea-newsBody" id="newsBodyOptional"  placeholder="Cuerpo"></textarea>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Subir</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
