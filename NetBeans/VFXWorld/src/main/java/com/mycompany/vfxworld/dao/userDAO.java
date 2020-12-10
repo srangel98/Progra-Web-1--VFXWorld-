@@ -4,20 +4,24 @@
  * and open the template in the editor.
  */
 package com.mycompany.vfxworld.dao;
+import com.mycompany.vfxworld.models.register;
 import com.mycompany.vfxworld.models.user;
 import com.mycompany.vfxworld.utils.dbConnection;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author 52811
  */
 public class userDAO {
     public static int signInUser(user User) {
+        Connection con = null;
         try {
-            Connection con = dbConnection.getConnection();
+            con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL insert_userRegistered(?, ?, ?);");
             statement.setString(1, User.getName());
             statement.setString(2, User.getPassword());
@@ -25,13 +29,24 @@ public class userDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return 0;
     }
     
     public static user logInUser(user User) {
+        Connection con = null;
         try {
-            Connection con = dbConnection.getConnection();
+            con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL logInUser(?,?)");
             statement.setString(1, User.getName());
             statement.setString(2, User.getPassword());
@@ -46,7 +61,77 @@ public class userDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return null;
     }
+    
+    public static user findModifyUser(String name) {
+        Connection con = null;
+        try {
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL findModifyUser(?)");
+            statement.setString(1, name);
+            ResultSet result = statement.executeQuery();
+            while (result.next()){
+                String modName = result.getString("name");
+                String modPassword = result.getString("password");
+                String modPhoto = result.getString("photo");
+                String modEmail = result.getString("email");
+                String modUserType = result.getString("userType");
+                return new user(modName, modPassword, modPhoto, modEmail, modUserType);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public static int modifUserReg(String mName, int mReg_id, String mEmail, String mPhoto, String mAboutMe) {
+        Connection con = null;
+        try {
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL modifUserReg(?, ?, ?, ?, ?)");
+            statement.setString(1, mName);
+            statement.setInt(2, mReg_id);
+            
+            statement.setString(3, mEmail);
+            statement.setString(4, mPhoto);
+            statement.setString(5, mAboutMe);
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+    
 }

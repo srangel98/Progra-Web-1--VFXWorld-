@@ -5,8 +5,6 @@
  */
 package com.mycompany.vfxworld.controllers;
 
-import com.mycompany.vfxworld.dao.userDAO;
-import com.mycompany.vfxworld.models.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,23 +17,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 52811
  */
-@WebServlet(name = "Registrarse", urlPatterns = {"/Registrarse"})
-public class Registrarse extends HttpServlet {
-    
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/CerrarSesion"})
+public class CerrarSesion extends HttpServlet {
+
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String username = request.getParameter("user");
-          String pass = request.getParameter("password");
-          String email = request.getParameter("email");
-          user User = new user(username, pass, email);
-
-        if(userDAO.signInUser(User)==1){
-            response.sendRedirect("MainPageController");
-
-        } else {
-            response.sendRedirect("error.jsp");
-        }
+        request.getSession().invalidate();
+        response.sendRedirect("MainPageController");
     }
 
     /**

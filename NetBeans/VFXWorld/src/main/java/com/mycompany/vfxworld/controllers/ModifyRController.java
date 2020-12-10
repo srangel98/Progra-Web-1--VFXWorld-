@@ -5,17 +5,12 @@
  */
 package com.mycompany.vfxworld.controllers;
 
-import com.mycompany.vfxworld.dao.categoryDAO;
-import com.mycompany.vfxworld.dao.creatorDAO;
 import com.mycompany.vfxworld.dao.registerDAO;
 import com.mycompany.vfxworld.dao.userDAO;
-import com.mycompany.vfxworld.models.category;
-import com.mycompany.vfxworld.models.creator;
 import com.mycompany.vfxworld.models.register;
 import com.mycompany.vfxworld.models.user;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 52811
  */
-@WebServlet(name = "IniciarSesion", urlPatterns = {"/IniciarSesion"})
-public class IniciarSesion extends HttpServlet {
+@WebServlet(name = "ModifyRController", urlPatterns = {"/ModifyRController"})
+public class ModifyRController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +34,6 @@ public class IniciarSesion extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -52,35 +46,23 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String aboutMe = null;
-        int id = 0;
-        String username = request.getParameter("nombre");
-        String password = request.getParameter("contrasena");
-         user User = new user(username, password); //user de página
-         user login = userDAO.logInUser(User); //user de la base de datos
-         if(login.getUserType().equals("R")){
-            register login_id = registerDAO.getRegisteredID(username);
-            id = login_id.getId();
-            aboutMe = login_id.getAboutMe();
-         } else if(login.getUserType().equals("C")){
-            creator login_id = creatorDAO.getCreatorID(username);
-            id = login_id.getId();
-         }
-         
-         if(login == null)
-         {
-             response.sendRedirect("error.jsp");
-         }else{
-             HttpSession session = request.getSession();
-             session.setAttribute("name", login.getName());
-             session.setAttribute("photo", login.getPhoto());
-             session.setAttribute("email", login.getEmail());
-             session.setAttribute("userType", login.getUserType());
-             session.setAttribute("registered_id", id);
-             session.setAttribute("registered_aboutMe", aboutMe);
-             
-             response.sendRedirect("MainPageController");
-         }
+        HttpSession session = request.getSession();
+        String mr_aboutMe = request.getParameter("mr_aboutMe");
+        String mr_email = request.getParameter("mr_email");
+        String mr_photo = "Imagenes/" + request.getParameter("mr_photo");
+        String mr_name = (String)session.getAttribute("name");
+         user User = new user(mr_name); //user de página
+         user modifyUser = userDAO.findModifyUser(mr_name); //user de la base de datos
+         register modifyReg = registerDAO.getRegisteredID(mr_name);
+         if(userDAO.modifUserReg(modifyUser.getName(), modifyReg.getId(), mr_email, mr_photo, mr_aboutMe)==1){
+             session.setAttribute("photo", mr_photo);
+             session.setAttribute("email", mr_email);
+             session.setAttribute("registered_aboutMe", mr_aboutMe);
+            response.sendRedirect("ProfileController");
+
+        } else {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**
