@@ -12,6 +12,7 @@
     List<category> categories = (List<category>)request.getAttribute("Categories");
 %>
    
+
          <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark georgiaNTR">
   <a class="navbar-brand ml-5" href="#">

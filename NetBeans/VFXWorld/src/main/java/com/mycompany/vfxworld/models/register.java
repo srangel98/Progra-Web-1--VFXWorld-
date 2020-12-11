@@ -22,6 +22,7 @@ public class register {
     public register(String name, int id) {
         this.name = name;
         this.id = id;
+        
     }
 
     public register(int id, String name, int id_mod, String suspendedTime, String aboutMe) {

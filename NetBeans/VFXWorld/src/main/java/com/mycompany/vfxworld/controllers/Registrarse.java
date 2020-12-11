@@ -29,6 +29,7 @@ public class Registrarse extends HttpServlet {
           String pass = request.getParameter("password");
           String email = request.getParameter("email");
           user User = new user(username, pass, email);
+          
 
         if(userDAO.signInUser(User)==1){
             response.sendRedirect("MainPageController");

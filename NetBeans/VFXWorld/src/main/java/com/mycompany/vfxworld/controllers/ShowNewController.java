@@ -48,6 +48,7 @@ public class ShowNewController extends HttpServlet {
             out.println("<title>Servlet ShowNewController</title>");            
             out.println("</head>");
             out.println("<body>");
+            
             out.println("<h1>Servlet ShowNewController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
@@ -72,6 +73,8 @@ public class ShowNewController extends HttpServlet {
         request.setAttribute("Categories", categories);
         List<comment> comentarios = commentDAO.getAllComments();
         request.setAttribute("Comentarios", comentarios);
+        List<comment> respuestas = commentDAO.getAllReplies();
+        request.setAttribute("todasRespuestas", respuestas);
         String id = request.getParameter("actualNewID");
         if(id == null){
             id = (String)session.getAttribute("idNoticia");

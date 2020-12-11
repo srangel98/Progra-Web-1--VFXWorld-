@@ -61,6 +61,7 @@ public class IniciarSesion extends HttpServlet {
          if(login.getUserType().equals("R")){
             register login_id = registerDAO.getRegisteredID(username);
             id = login_id.getId();
+            
             aboutMe = login_id.getAboutMe();
          } else if(login.getUserType().equals("C")){
             creator login_id = creatorDAO.getCreatorID(username);

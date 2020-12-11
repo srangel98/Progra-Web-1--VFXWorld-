@@ -13,11 +13,14 @@
 <%
     List<category> categories = (List<category>) request.getAttribute("Categories");
     List<news> noticias = (List<news>) request.getAttribute("NoticiasAutor");
+    List<news> approvedNews = (List<news>) request.getAttribute("allNews");
+    List<news> favNewsID = (List<news>) request.getAttribute("idNewsFav");
     int insertCategories = 0;
 %>
 <!DOCTYPE html>
 <html lang="en">
-    
+
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,26 +68,39 @@
             <div class="row text-white" style="margin-top:30px; margin-bottom:30px;">
 
 
-                <% if (session.getAttribute("userType").equals("R")) {%>
+
+
+
+
+                <% if (session.getAttribute("userType").equals("R")) { %>
                 <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Siguiendo</span>
-                        <span class="badge badge-secondary badge-pill">3</span>
+                        <span class="text-muted">Noticias Favoritas</span>
+
                     </h4>
                     <div style="overflow: scroll; height: 450px;">
                         <ul class="list-group mb-3">
+                            <%   for (news idsNoticias : favNewsID) {
+                                    for (news NoticiasFav : approvedNews) {
+                                        if (idsNoticias.getId() == NoticiasFav.getId()) {
 
 
+                            %>
 
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <h5 style="color: black;">Noticia 1</h5>
-                                    <small class="text-muted">Descripción corta</small>
+                                    <h5 style="color: black;"><%=NoticiasFav.getTitle()%></h5>
+                                    <small class="text-muted"><%=NoticiasFav.getDescription()%></small>
                                 </div>
                             </li>
+                            <%                            }
+                                    }
+                                }
+                            %>
                         </ul>
                     </div>
                 </div>
+
                 <% } else if (session.getAttribute("userType").equals("C")) {%>
                 <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -102,16 +118,16 @@
                                     <h5 style="color: black;"> <%= Noticia.getTitle()%> </h5>
                                     <small class="text-muted"> <%= Noticia.getDescription()%> </small>
                                     <br> </br>
-                                    <% if (Noticia.getApproved() == 0 && Noticia.getFeedback() == null){ %>
+                                    <% if (Noticia.getApproved() == 0 && Noticia.getFeedback() == null) { %>
                                     <small class="text-warning">Pendiente de aprobación</small>
-                                    <%} else if(Noticia.getFeedback() != null) {%>
+                                    <%} else if (Noticia.getFeedback() != null) {%>
                                     <form action="PreviewNewsController" method="POST">
-                                    <small class="text-danger" style="display:block;">Noticia Rechazada</small>
-                                    <small class="text-warning"><%=Noticia.getFeedback()%></small>
-                                    <button type="submit" class="btn btn-primary mt-1 ml-auto d-flex ">Ver Noticia</button>
-                                    <input class="text-muted" style="display:none;" name="iDNewEdit" value="<%= Noticia.getId()%>">
+                                        <small class="text-danger" style="display:block;">Noticia Rechazada</small>
+                                        <small class="text-warning"><%=Noticia.getFeedback()%></small>
+                                        <button type="submit" class="btn btn-primary mt-1 ml-auto d-flex ">Ver Noticia</button>
+                                        <input class="text-muted" style="display:none;" name="iDNewEdit" value="<%= Noticia.getId()%>">
                                     </form>
-                                    <%} else if(Noticia.getApproved() == 1) {%>
+                                    <%} else if (Noticia.getApproved() == 1) {%>
                                     <small class="text-success">Noticia Aprobada</small>
                                     <%}%>
                                 </div>
@@ -219,6 +235,7 @@
                             <%}%>
                         </div>
 
+
                         <div class="mb-3" style="margin-top: 10px;">
                             <label for="username">Nombre de Usuario</label>
                             <h6><%= session.getAttribute("name")%></h6>
@@ -254,7 +271,7 @@
 
 
 
-        <!-- Footer -->
+
         <!-- Footer -->
         <footer style="background-color:rgb(52, 58, 64);" class="page-footer font-small text-white pt-4">
 

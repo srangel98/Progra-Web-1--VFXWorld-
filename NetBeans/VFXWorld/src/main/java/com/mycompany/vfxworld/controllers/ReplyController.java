@@ -5,13 +5,10 @@
  */
 package com.mycompany.vfxworld.controllers;
 
-import com.mycompany.vfxworld.dao.categoryDAO;
 import com.mycompany.vfxworld.dao.commentDAO;
-import com.mycompany.vfxworld.models.category;
 import com.mycompany.vfxworld.models.comment;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 52811
  */
-@WebServlet(name = "CommentController", urlPatterns = {"/CommentController"})
-public class CommentController extends HttpServlet {
+@WebServlet(name = "ReplyController", urlPatterns = {"/ReplyController"})
+public class ReplyController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,16 +40,14 @@ public class CommentController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CommentController</title>");            
+            out.println("<title>Servlet ReplyController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CommentController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ReplyController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -66,33 +61,34 @@ public class CommentController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
-        String userName = null;
-        String photoUser = null;
+        int idComment = Integer.parseInt(request.getParameter("idCommentforReply"));
+        String userName;
         boolean isAnon = false;
-        String bodyComent = request.getParameter("comentario");
+        String bodyReply = request.getParameter("respuesta");
         
-          if(session.getAttribute("userType").equals("0")){
+        if(session.getAttribute("userType").equals("0")){
           userName = "Usuario Anonimo";
-          photoUser = "Imagenes/avatar.png";
+          
           isAnon = true;
           
           } else{
           userName = (String)session.getAttribute("name");
-          photoUser = (String)session.getAttribute("photo");
           }
           
           String idNoticia = request.getParameter("idNoticia");
           session.setAttribute("idNoticia", idNoticia);
           int idNews = Integer.parseInt(idNoticia);
-          comment Comentario = new comment(bodyComent, isAnon, false, userName, idNews, photoUser);
-
-        if(commentDAO.insertComment(Comentario)==1){
+        
+        comment respuesta = new comment(bodyReply, isAnon, true, userName, idNews, idComment);
+        
+        
+        
+        if(commentDAO.insertReply(respuesta) == 1){
             response.sendRedirect("ShowNewController");
-
-        } else {
+        }else{
             response.sendRedirect("error.jsp");
         }
+        
     }
 
     /**

@@ -25,6 +25,7 @@ public class commentDAO {
     public static int insertComment(comment Comentario) {
         Connection con = null;
         try {
+            
             con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL insertComment(?,?,?,?,?, ?);");
             statement.setString(1, Comentario.getBody());
@@ -36,14 +37,14 @@ public class commentDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(commentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(commentDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -86,6 +87,35 @@ public class commentDAO {
         return null;
     }
     
+    public static int insertReply(comment Comentario) {
+        Connection con = null;
+        try {
+            
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL insertReply(?,?,?,?,?, ?);");
+            statement.setString(1, Comentario.getBody());
+            statement.setBoolean(2, Comentario.getIsAnon());
+            statement.setBoolean(3, Comentario.getIsReply());
+            statement.setString(4, Comentario.getNameUser());
+            statement.setInt(5, Comentario.getIdNews());
+            statement.setInt(6, Comentario.getIdCommentToReply());
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(commentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(commentDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+    
     public static List<comment> getAllReplies() {
         Connection con = null;
         try {
@@ -101,9 +131,9 @@ public class commentDAO {
                 boolean isReply = result.getBoolean("isReply");
                 String nameUser = result.getString("nameUser");
                 int idNews = result.getInt("idNews");
-                String photoUser = result.getString("photoUser");
+                int idCommentToReply = result.getInt("idCommentToReply");
                 
-                respuestas.add(new comment(id, body, rate, isAnon, isReply, nameUser, idNews, photoUser));
+                respuestas.add(new comment(id, body, rate, isAnon, isReply, nameUser, idNews, idCommentToReply));
             }
             return respuestas;
         } catch (SQLException ex) {
@@ -121,5 +151,7 @@ public class commentDAO {
         }
         return null;
     }
+    
+    
     
 }

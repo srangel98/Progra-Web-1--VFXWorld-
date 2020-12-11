@@ -22,6 +22,7 @@ public class creatorDAO {
     public static creator getCreatorID(String Name) {
         Connection con = null;
         try {
+            
             con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL findCreator_id(?)");
             statement.setString(1, Name);
@@ -32,14 +33,14 @@ public class creatorDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(creatorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(creatorDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

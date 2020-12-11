@@ -25,6 +25,7 @@ public class newsDAO {
     public static int createNews(news Noticia) {
         Connection con = null;
         try {
+            
             con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL createNews(?, ?, ?, ?, ?, ?, ?, ?, ?);");
             statement.setString(1, Noticia.getTitle());
@@ -40,14 +41,47 @@ public class newsDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+    
+    public static int createApprovedNews(news Noticia) {
+        Connection con = null;
+        try {
+            
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL createNewsApproved(?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            statement.setString(1, Noticia.getTitle());
+            statement.setString(2, Noticia.getDescription());
+            statement.setString(3, Noticia.getCategory());
+            statement.setString(4, Noticia.getBody());
+            statement.setString(5, Noticia.getVideos());
+            statement.setString(6, Noticia.getMiniImage());
+            statement.setString(7, Noticia.getHeaderImage());
+            statement.setString(8, Noticia.getBodyImage());
+            statement.setString(9, Noticia.getAutor());
+            String prueba = Noticia.getAutor();
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(con != null){
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -82,13 +116,13 @@ public class newsDAO {
             return noticiasAutor;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (con != null) {
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -120,13 +154,13 @@ public class newsDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (con != null) {
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -160,13 +194,13 @@ public class newsDAO {
             return noticias;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (con != null) {
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -184,14 +218,14 @@ public class newsDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -207,14 +241,14 @@ public class newsDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -243,14 +277,14 @@ public class newsDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -267,14 +301,14 @@ public class newsDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -291,18 +325,47 @@ public class newsDAO {
             return statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally{
             if(con != null){
                 try {
                     con.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         return 0;
+    }
+    
+    public static List<news> getFavNewsID(String name) {
+        Connection con = null;
+        try {
+            List<news> idsNoticias = new ArrayList<>();
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL getIdNewsFavourite(?)");
+            statement.setString(1, name);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("idNews");
+
+                idsNoticias.add(new news(id));
+            }
+            return idsNoticias;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
     }
     
 }

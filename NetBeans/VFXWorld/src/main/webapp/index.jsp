@@ -17,6 +17,7 @@
     List<news> approvedNews = (List<news>) request.getAttribute("allNews");
 %>
 <!DOCTYPE html>
+
 <html lang="en">
 
     <head>

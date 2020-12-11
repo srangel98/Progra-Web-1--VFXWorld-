@@ -14,12 +14,15 @@
     List<category> categories = (List<category>) request.getAttribute("Categories");
     List<news> noticias = (List<news>) request.getAttribute("NoticiasAutor");
     List<news> todasNoticias = (List<news>) request.getAttribute("TodasNoticias");
+    List<news> approvedNews = (List<news>) request.getAttribute("allNews");
+    List<news> favNewsID = (List<news>) request.getAttribute("idNewsFav");
     //news not = (news)session.getAttribute("NoticiaSinAprobar");
     int insertCategories = 0;
 %>
 <!DOCTYPE html>
 <html lang="en">
 
+    
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -98,7 +101,7 @@
                 <div class="col-md-6 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Tus noticias</span>
-                        <span class="badge badge-secondary badge-pill">5</span>
+                        
                     </h4>
                     <div style="overflow: scroll; height: 450px;">
                         <ul class="list-group mb-3">
@@ -132,7 +135,7 @@
                 <div class="col-md-6 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Noticias pendientes</span>
-                        <span class="badge badge-secondary badge-pill">5</span>
+                        
                     </h4>
                     <div style="overflow: scroll; height: 450px;">
                         <ul class="list-group mb-3">
@@ -161,12 +164,141 @@
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
 
+        <%} else{%>
+        
+        
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                
+                <div class="col-md-12 order-md-1 mb-5 text-white">
+                    <h4 class="mb-3 text-center ">Información de la cuenta</h4>
+
+
+                    <div class="text-center" style="margin-top: 40px;">
+                        <label for="username">Sobre mí:</label>
+
+                        <h6>Bienvenido a mi perfil, soy el Administrador.</h6>
+
+                    </div>
+
+                    <div class="text-center" style="margin-top: 10px;">
+                        <label for="username">Nombre de Usuario</label>
+                        <h6><%= session.getAttribute("name")%></h6>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 10px;">
+                        <label for="email">Correo electrónico</label>
+                        <h6><%= session.getAttribute("email")%></h6>
+                    </div>
+
+                    
+
+                </div>
+                        
+                <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Noticias Favoritas</span>
+
+                    </h4>
+                    <div style="overflow: scroll; height: 450px;">
+                        <ul class="list-group mb-3">
+                            <%   for (news idsNoticias : favNewsID) {
+                                    for (news NoticiasFav : approvedNews) {
+                                        if (idsNoticias.getId() == NoticiasFav.getId()) {
+
+
+                            %>
+
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h5 style="color: black;"><%=NoticiasFav.getTitle()%></h5>
+                                    <small class="text-muted"><%=NoticiasFav.getDescription()%></small>
+                                </div>
+                            </li>
+                            <%                            }
+                                    }
+                                }
+                            %>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Tus noticias</span>
+                        
+                    </h4>
+                    <div style="overflow: scroll; height: 450px;">
+                        <ul class="list-group mb-3">
+                            <%
+                                for (news Noticia : noticias) {
+
+                            %>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h5 style="color: black;"> <%= Noticia.getTitle()%> </h5>
+                                    <small class="text-muted"> <%= Noticia.getDescription()%> </small>
+                                    <br> </br>
+                                    <% if (Noticia.getApproved() == 0 && Noticia.getFeedback().equals("null")) { %>
+                                    <small class="text-warning">Pendiente de aprobación</small>
+                                    <%} else if (Noticia.getApproved() == 0 && !Noticia.getFeedback().equals("null")) {%>
+                                    <small class="text-danger">Noticia Rechazada</small>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit" >Ver retroalimentación</button>
+                                    <%} else if (Noticia.getApproved() == 1) {%>
+                                    <small class="text-success">Noticia Aprobada</small>
+                                    <% } %>
+                                </div>
+                            </li>
+                            <%
+                                }
+                            %>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"  data-target=".doNews">Crear noticia</button>
+                </div>
+
+                <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Noticias pendientes</span>
+                        
+                    </h4>
+                    <div style="overflow: scroll; height: 450px;">
+                        <ul class="list-group mb-3">
+                            <%
+                                for (news allNews : todasNoticias) {
+                                    if (allNews.getFeedback() == null && allNews.getApproved() == 0) {
+
+                            %>
+                            <form action="PreviewNewsController" method="POST">
+                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div>
+                                        <h5 style="color: black;"> <%= allNews.getTitle()%> </h5>
+                                        <small class="text-muted"> Autor: <%= allNews.getAutor()%> </small>
+                                        <input class="text-muted" style="display:none;" name="iDNewEdit" value="<%= allNews.getId()%>">
+                                        <br> </br>
+                                        <button type="submit" class="btn btn-primary">Abrir</button>
+
+                                    </div>
+                                </li>
+                            </form>
+                            <%
+                                    }
+                                }
+                            %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%}%>
 
 
-        <form action="UploadNewsController" method="POST">
+        <form action="EditorAdminNewsController" method="POST">
             <div class="modal fade doNews" style="color: black;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -201,7 +333,7 @@
                                         }
                                     %>
                                 </select>
-                                <input type="text hidden" id="uploadCategory" class="text-muted" name="categoriaNoticia" readonly="readonly" >
+                                <input type="text hidden" id="uploadCategory" class="text-muted" style="display:none;" name="categoriaNoticia" readonly="readonly" >
                             </div>
 
                             <div class="form-group">

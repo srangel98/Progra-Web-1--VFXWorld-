@@ -51,6 +51,7 @@ public class ModifyRController extends HttpServlet {
         String mr_email = request.getParameter("mr_email");
         String mr_photo = "Imagenes/" + request.getParameter("mr_photo");
         String mr_name = (String)session.getAttribute("name");
+        
          user User = new user(mr_name); //user de página
          user modifyUser = userDAO.findModifyUser(mr_name); //user de la base de datos
          register modifyReg = registerDAO.getRegisteredID(mr_name);

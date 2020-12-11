@@ -45,6 +45,7 @@ public class ProfileController extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet ProfileController</title>");            
             out.println("</head>");
+            
             out.println("<body>");
             out.println("<h1>Servlet ProfileController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
@@ -67,12 +68,19 @@ public class ProfileController extends HttpServlet {
        HttpSession session = request.getSession();
        List<category> categories = categoryDAO.getCategories();
        request.setAttribute("Categories", categories);
+       List<news> idNewsFav = newsDAO.getFavNewsID((String)session.getAttribute("name"));
+       request.setAttribute("idNewsFav", idNewsFav);
+       List<news> allNews = newsDAO.getAllNews();
+        
+        request.setAttribute("allNews", allNews);
        if(session.getAttribute("userType").equals("C") || session.getAttribute("userType").equals("E") || session.getAttribute("userType").equals("A")){
        List<news> noticiasAutor = newsDAO.getNewsAutor((String)session.getAttribute("name"));
        request.setAttribute("NoticiasAutor", noticiasAutor);
        }
        if (session.getAttribute("userType").equals("C") || session.getAttribute("userType").equals("R")){
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+           
+           request.getRequestDispatcher("profile.jsp").forward(request, response);
+           
        }
        else{
            List<news> todasNoticias = newsDAO.getAllNews();

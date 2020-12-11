@@ -16,9 +16,12 @@
     List<category> categories = (List<category>) request.getAttribute("Categories");
     news not = (news) request.getAttribute("Noticia");
     List<comment> comentarios = (List<comment>) request.getAttribute("Comentarios");
+    List<comment> todasRespuestas = (List<comment>) request.getAttribute("todasRespuestas");
+    int contador = 0;
 %>
 <!DOCTYPE html>
 <html lang="en">
+
 
     <head>
         <meta charset="UTF-8">
@@ -39,6 +42,25 @@
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="main.css">
     </head>
+
+    <script>
+
+        $(document).ready(function () {
+
+        <% for (comment Comentario : comentarios) {
+                if (Comentario.getIdNews() == not.getId()) {
+                    contador++;
+        %>
+
+            $('#responder<%=contador%>').on('click', function () {
+                $('#escribirRespuesta<%=contador%>').toggle();
+            });
+        <%}
+            }
+            contador = 0;%>
+        });
+
+    </script>
 
     <body>
         <!-- Navbar -->
@@ -77,25 +99,20 @@
                         <div class="col-12">
                             <form action="FavController" method="POST">
                                 <input style="display:none" value="<%=not.getId()%>" name="idNew">
-                            <button type="submit" class="mx-auto d-flex" style="border:none; background-color:white;">
-                                <%if (session.getAttribute("isMarked").equals("0")) {%>
-                                <img src="Imagenes/fav-neutral.png"  width="41" height="50">
-                                <%} else {%>
-                                <img src="Imagenes/fav-active.png"  width="41" height="50">
-                                <%}%>
-                            </button>
+                                <button type="submit" class="mx-auto d-flex" style="border:none; background-color:white;">
+                                    <%if (session.getAttribute("isMarked").equals("0")) {%>
+                                    <img src="Imagenes/fav-neutral.png"  width="41" height="50">
+                                    <%} else {%>
+                                    <img src="Imagenes/fav-active.png"  width="41" height="50">
+                                    <%}%>
+                                </button>
                             </form>
                         </div>
                         <div class="dropdown-divider dp_div2 col-12"></div>
-                        <div class="col-5">
-                            <button type="submit" class="ml-auto d-flex" style="border:none; background-color:white;"> <img src="Imagenes/like-neutral.png"  width="41" height="50"></button>
+                        <div class="col-12">
+                            <h2 class="text-center mt-2"> Puntuación: <%=not.getRate()%> </h2>
                         </div>
-                        <div class="col-2">
-                            <h2 class="text-center mt-2">  <%=not.getRate()%> </h2>
-                        </div>
-                        <div class="col-5">
-                            <button type="submit" class="" style="border:none; background-color:white;"> <img src="Imagenes/dislike-neutral.png"  width="41" height="50"></button>
-                        </div>
+
                     </div>
                     <%}%>
 
@@ -117,7 +134,7 @@
                                     <div class="panel panel-info">
                                         <div class="panel-body">
                                             <form action="CommentController" method="POST">
-                                                <textarea placeholder="¡Comparte algo con los demás! :)" class="pb-cmnt-textarea" name="comentario"></textarea>
+                                                <textarea placeholder="¡Comparte algo con los demás! :)" class="pb-cmnt-textarea" name="comentario" required></textarea>
                                                 <textarea name="idNoticia" style="display:none;"><%=not.getId()%></textarea>
                                                 <button class="btn btn-success pull-right" type="submit">Comentar</button>
                                             </form>
@@ -127,14 +144,14 @@
                             </div>
                         </div>
                         <!-- Comentarios individuales -->
-                        <div class="ind-com">
+                        <div class="ind-com row">
                             <% for (comment Comentario : comentarios) {
                                     if (Comentario.getIdNews() == not.getId()) {
-
+                                        contador++;
                             %>
-                            <li class="media" style="margin-left:20px; margin-bottom: 30px;">
-                                <img class="media-object rounded-circle" src="<%=Comentario.getPhotoUser()%>" alt="profile">
-                                <div style="margin-left: 20px; margin-top: 0px;">
+                            <li class="media col-12" >
+                                <img class=" media-object rounded-circle responsiveImage" src="<%=Comentario.getPhotoUser()%>" alt="profile">
+                                <div class="col-8" style="margin-left: 20px; margin-top: 0px;">
                                     <div >
                                         <h4 class="media-heading text-uppercase reviews"><%=Comentario.getNameUser()%> </h4>
                                         <p class="media-comment">
@@ -143,11 +160,35 @@
                                         <p style="font-size: 1.15vh;">
                                             Puntaje: 
                                         </p>
+                                        <div class="col-12 ">
+                                        <button type="button" id="responder<%=contador%>" class="btn btn-info">Ver respuestas</button>
+                                        <div id="escribirRespuesta<%=contador%>" class=" bg-secondary border rounded p-3 allReplies " style="display: none;">
+                                            <form action="ReplyController" method="POST">
+                                                
+                                        <textarea placeholder="¡Comparte algo con los demás! :)" class="mt-3 pb-cmnt-textarea" name="respuesta" style="height:100px;" required></textarea>
+                                        <button type="submit" class="btn btn-success ml-auto d-flex">Responder</button>
+                                        <textarea name="idCommentforReply" style="display:none;"><%=Comentario.getId()%></textarea>
+                                        <textarea name="idNoticia" style="display:none;"><%=not.getId()%></textarea>
+                                        </form>
+                                        <%  for (comment replies : todasRespuestas) {
+                                            if(replies.getIdCommentToReply() == Comentario.getId()){
+                                        %>
+                                        <div class="col-12 pt-2  mt-3 rounded border border-dark bg-white" style="">
+                                        <h5 class="media-heading text-uppercase reviews"><%=replies.getNameUser()%> </h5>
+                                        <p class="media-comment">
+                                            <%=replies.getBody()%>
+                                        </p>
+                                        </div>
+                                        <%}}%>
+                                        </div>
+                                        </div>
                                     </div>              
                                 </div>
                             </li>
+                            <div class="dropdown-divider dp_div2 col-12"></div>
                             <%}
-                                }%>
+                                }
+                                contador = 0;%>
 
                         </div>
                     </div>

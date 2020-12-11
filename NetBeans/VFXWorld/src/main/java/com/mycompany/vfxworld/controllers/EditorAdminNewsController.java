@@ -5,13 +5,10 @@
  */
 package com.mycompany.vfxworld.controllers;
 
-import com.mycompany.vfxworld.dao.categoryDAO;
-import com.mycompany.vfxworld.dao.commentDAO;
-import com.mycompany.vfxworld.models.category;
-import com.mycompany.vfxworld.models.comment;
+import com.mycompany.vfxworld.dao.newsDAO;
+import com.mycompany.vfxworld.models.news;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 52811
  */
-@WebServlet(name = "CommentController", urlPatterns = {"/CommentController"})
-public class CommentController extends HttpServlet {
+@WebServlet(name = "EditorAdminNewsController", urlPatterns = {"/EditorAdminNewsController"})
+public class EditorAdminNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,16 +40,25 @@ public class CommentController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CommentController</title>");            
+            out.println("<title>Servlet EditorAdminNewsController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CommentController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditorAdminNewsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -65,34 +71,23 @@ public class CommentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
+        String tituloNoticia = request.getParameter("tituloNoticia");//
+        String descripcionNoticia = request.getParameter("descripcionNoticia");//
+        String categoriaNoticia = request.getParameter("categoriaNoticia");//
+        String imagenMiniatura = "Imagenes/" + request.getParameter("imagenMiniatura");
+        String imagenEncabezado = "Imagenes/" +request.getParameter("imagenEncabezado");
+        String cuerpoNoticia = request.getParameter("cuerpoNoticia");//
+        String imagenCuerpo = "Imagenes/" +request.getParameter("imagenCuerpo");
+        String videoNoticia = "Videos/" +request.getParameter("videoNoticia");//
+        news Noticia = new news(tituloNoticia, descripcionNoticia, cuerpoNoticia, categoriaNoticia, videoNoticia, imagenMiniatura, imagenEncabezado, imagenCuerpo, (String)session.getAttribute("name")); //user de página
         
-        String userName = null;
-        String photoUser = null;
-        boolean isAnon = false;
-        String bodyComent = request.getParameter("comentario");
-        
-          if(session.getAttribute("userType").equals("0")){
-          userName = "Usuario Anonimo";
-          photoUser = "Imagenes/avatar.png";
-          isAnon = true;
-          
-          } else{
-          userName = (String)session.getAttribute("name");
-          photoUser = (String)session.getAttribute("photo");
-          }
-          
-          String idNoticia = request.getParameter("idNoticia");
-          session.setAttribute("idNoticia", idNoticia);
-          int idNews = Integer.parseInt(idNoticia);
-          comment Comentario = new comment(bodyComent, isAnon, false, userName, idNews, photoUser);
-
-        if(commentDAO.insertComment(Comentario)==1){
-            response.sendRedirect("ShowNewController");
-
-        } else {
-            response.sendRedirect("error.jsp");
-        }
+         if(newsDAO.createApprovedNews(Noticia) == 1){
+            response.sendRedirect("ProfileController");
+         }
+         else {
+             response.sendRedirect("error.jsp");
+         }
     }
 
     /**

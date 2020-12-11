@@ -45,6 +45,7 @@ public class MainPageController extends HttpServlet {
         List<category> categories = categoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         List<news> allNews = newsDAO.getAllNews();
+        
         request.setAttribute("allNews", allNews);
         if(session.getAttribute("userType") == null){
         session.setAttribute("userType", "0");

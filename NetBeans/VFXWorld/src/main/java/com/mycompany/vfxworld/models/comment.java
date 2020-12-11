@@ -18,8 +18,10 @@ public class comment {
     private String nameUser;
     private int idNews;
     private String photoUser;
+    private int idCommentToReply;
 
     public comment() {
+        
     }
 
     public comment(int id, String body, int rate, boolean isAnon, boolean isReply, String nameUser, int idNews, String photoUser) {
@@ -33,6 +35,17 @@ public class comment {
         this.photoUser = photoUser;
     }
 
+    public comment(int id, String body, int rate, boolean isAnon, boolean isReply, String nameUser, int idNews, int idCommentToReply) {
+        this.id = id;
+        this.body = body;
+        this.rate = rate;
+        this.isAnon = isAnon;
+        this.isReply = isReply;
+        this.nameUser = nameUser;
+        this.idNews = idNews;
+        this.idCommentToReply = idCommentToReply;
+    }
+    
     public comment(String body, boolean isAnon, boolean isReply, String nameUser, int idNews, String photoUser) {
         this.body = body;
         this.isAnon = isAnon;
@@ -41,10 +54,29 @@ public class comment {
         this.idNews = idNews;
         this.photoUser = photoUser;
     }
+    
+    public comment(String body, boolean isAnon, boolean isReply, String nameUser, int idNews, int idCommentToReply) {
+        this.body = body;
+        this.isAnon = isAnon;
+        this.isReply = isReply;
+        this.nameUser = nameUser;
+        this.idNews = idNews;
+        this.idCommentToReply = idCommentToReply;
+    }
 
     public String getPhotoUser() {
         return photoUser;
     }
+
+    public int getIdCommentToReply() {
+        return idCommentToReply;
+    }
+
+    public void setIdCommentToReply(int idCommentToReply) {
+        this.idCommentToReply = idCommentToReply;
+    }
+    
+    
 
     public void setPhotoUser(String photoUser) {
         this.photoUser = photoUser;

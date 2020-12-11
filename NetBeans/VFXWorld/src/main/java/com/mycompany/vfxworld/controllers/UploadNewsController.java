@@ -42,6 +42,7 @@ public class UploadNewsController extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet UploadNewsController</title>");            
             out.println("</head>");
+            
             out.println("<body>");
             out.println("<h1>Servlet UploadNewsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");

@@ -24,6 +24,7 @@ public class categoryDAO {
     public static List<category> getCategories() {
         Connection con = null;
         try {
+            
             List<category> categories = new ArrayList<>();
             con = dbConnection.getConnection();
             CallableStatement statement = con.prepareCall("CALL getAllCategories()");

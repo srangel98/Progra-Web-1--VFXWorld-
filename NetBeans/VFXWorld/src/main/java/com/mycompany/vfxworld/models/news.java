@@ -26,6 +26,7 @@ public class news {
 
     public news(){
         
+        
     }
     
     public news(String title, String description, String body, String category, String videos, String miniImage, String headerImage, String bodyImage, String autor) {
@@ -40,6 +41,12 @@ public class news {
         this.autor = autor;
     }
 
+    public news(int id) {
+        this.id = id;
+    }
+
+    
+    
     public news(int id, String title, String description, String body, String category, int rate, int approved, String feedback, String miniImage, String headerImage, String bodyImage, String videos, String autor) {
         this.id = id;
         this.title = title;
