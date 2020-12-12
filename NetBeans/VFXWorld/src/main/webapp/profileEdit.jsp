@@ -49,30 +49,9 @@
         <!-- Derecha -->
         <div class="container">
             <div class="row text-white" style="margin-top:30px; margin-bottom:30px;">
-                <% if (session.getAttribute("userType").equals("R")) {%>
-                <div class="col-md-4 order-md-2 mb-4"> <!--ESTO ES LO DE LA DERECHA-->
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Siguiendo</span>
-                        <span class="badge badge-secondary badge-pill">3</span>
-                    </h4>
-                    <div style="overflow: scroll; height: 450px;">
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h5 style="color: black;">Persona 1</h5>
-                                    <small class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, consequatur.</small>
-                                    <br> </br>
-                                    <small class="text-muted">En: "El FVX en Hollywood"</small>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <% }%>
-
-
+                
                 <!-- Izquierda -->
-                <div class="col-md-8 order-md-1">
+                <div class="col-md-12 order-md-1">
                     <h4 class="mb-3">Información de la cuenta</h4>
                     <form class="needs-validation" novalidate="" action="ModifyRController" method="POST">
 

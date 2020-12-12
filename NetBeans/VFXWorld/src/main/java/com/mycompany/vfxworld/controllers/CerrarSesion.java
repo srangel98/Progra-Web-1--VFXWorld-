@@ -33,7 +33,7 @@ public class CerrarSesion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getSession().invalidate();
-        
+        ///////poner session.setAttribute("error", "0");
         response.sendRedirect("MainPageController");
     }
 

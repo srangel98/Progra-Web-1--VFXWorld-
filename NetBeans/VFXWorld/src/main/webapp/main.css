@@ -44,6 +44,10 @@ body{
     background-color: rgb(68, 56, 56);
 }
 
+.cursor-pointer:hover{
+    cursor:pointer;
+}
+
 .img-logo{
     width: 40px;
 }

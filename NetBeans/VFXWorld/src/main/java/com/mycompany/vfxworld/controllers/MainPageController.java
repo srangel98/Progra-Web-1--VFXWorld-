@@ -42,12 +42,15 @@ public class MainPageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        
         List<category> categories = categoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         List<news> allNews = newsDAO.getAllNews();
-        
         request.setAttribute("allNews", allNews);
+        List<news> top3News = newsDAO.getBestRatedNews();
+        request.setAttribute("topthree", top3News);
         if(session.getAttribute("userType") == null){
+            
         session.setAttribute("userType", "0");
         }
        request.getRequestDispatcher("index.jsp").forward(request, response);

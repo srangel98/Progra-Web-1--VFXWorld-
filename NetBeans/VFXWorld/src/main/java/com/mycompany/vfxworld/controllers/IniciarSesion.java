@@ -52,13 +52,20 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String aboutMe = null;
         int id = 0;
         String username = request.getParameter("nombre");
         String password = request.getParameter("contrasena");
          user User = new user(username, password); //user de página
          user login = userDAO.logInUser(User); //user de la base de datos
-         if(login.getUserType().equals("R")){
+         
+         if(login == null)
+         {
+             
+             response.sendRedirect("MainPageController");
+         }else{
+             if(login.getUserType().equals("R")){
             register login_id = registerDAO.getRegisteredID(username);
             id = login_id.getId();
             
@@ -68,18 +75,14 @@ public class IniciarSesion extends HttpServlet {
             id = login_id.getId();
          }
          
-         if(login == null)
-         {
-             response.sendRedirect("error.jsp");
-         }else{
-             HttpSession session = request.getSession();
+             
              session.setAttribute("name", login.getName());
              session.setAttribute("photo", login.getPhoto());
              session.setAttribute("email", login.getEmail());
              session.setAttribute("userType", login.getUserType());
              session.setAttribute("registered_id", id);
              session.setAttribute("registered_aboutMe", aboutMe);
-             
+
              response.sendRedirect("MainPageController");
          }
     }

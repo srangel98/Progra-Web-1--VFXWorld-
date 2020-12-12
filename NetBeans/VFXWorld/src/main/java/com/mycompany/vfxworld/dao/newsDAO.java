@@ -368,4 +368,126 @@ public class newsDAO {
         return null;
     }
     
+    public static List<news> getBestRatedNews() {
+        Connection con = null;
+        try {
+            List<news> noticias = new ArrayList<>();
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL getBestRatedNews()");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String title = result.getString("title");
+                String description = result.getString("description");
+                String body = result.getString("body");
+                String category = result.getString("category");
+                int rate = result.getInt("rate");
+                int approved = result.getInt("approved");
+                String feedback = result.getString("feedback");
+                String miniImage = result.getString("miniImage");
+                String headerImage = result.getString("headerImage");
+                String bodyImage = result.getString("bodyImage");
+                String videos = result.getString("videos");
+                String creator = result.getString("creator");
+
+                noticias.add(new news(id, title, description, body, category, rate, approved, feedback, miniImage, headerImage, bodyImage, videos, creator));
+            }
+            return noticias;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public static List<news> getBrowseNews(String fragment) {
+        Connection con = null;
+        try {
+            List<news> noticias = new ArrayList<>();
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL browseNewLike(?)");
+            statement.setString(1, fragment);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String title = result.getString("title");
+                String description = result.getString("description");
+                String body = result.getString("body");
+                String category = result.getString("category");
+                int rate = result.getInt("rate");
+                int approved = result.getInt("approved");
+                String feedback = result.getString("feedback");
+                String miniImage = result.getString("miniImage");
+                String headerImage = result.getString("headerImage");
+                String bodyImage = result.getString("bodyImage");
+                String videos = result.getString("videos");
+                String creator = result.getString("creator");
+
+                noticias.add(new news(id, title, description, body, category, rate, approved, feedback, miniImage, headerImage, bodyImage, videos, creator));
+            }
+            return noticias;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public static List<news> getBrowseNewsCategory(String fragment) {
+        Connection con = null;
+        try {
+            List<news> noticias = new ArrayList<>();
+            con = dbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL searchNewByCategory(?)");
+            statement.setString(1, fragment);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String title = result.getString("title");
+                String description = result.getString("description");
+                String body = result.getString("body");
+                String category = result.getString("category");
+                int rate = result.getInt("rate");
+                int approved = result.getInt("approved");
+                String feedback = result.getString("feedback");
+                String miniImage = result.getString("miniImage");
+                String headerImage = result.getString("headerImage");
+                String bodyImage = result.getString("bodyImage");
+                String videos = result.getString("videos");
+                String creator = result.getString("creator");
+
+                noticias.add(new news(id, title, description, body, category, rate, approved, feedback, miniImage, headerImage, bodyImage, videos, creator));
+            }
+            return noticias;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(newsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    
 }

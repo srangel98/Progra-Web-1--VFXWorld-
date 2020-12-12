@@ -78,15 +78,15 @@
                     <div class="card-news rounded">
                         <h1 style="margin-bottom: 10px;"><%=not.getTitle()%></h1>
                         <h5 style="margin-top: 5px; margin-bottom: 15px;"><%=not.getDescription()%></h5>
-                        <h6>Esta es la fecha de creación</h6>
                         <div class="dropdown-divider dp_div2"></div>
                         <p class="news-body"> <%=not.getBody()%>
 
                             <img src="<%=not.getBodyImage()%>" alt="" style="max-height:300px;" class="img-fluid mx-auto d-block mt-5 mb-5">
+                            <% if (!not.getVideos().equals("Videos/")) {%>
                             <video class="img-fluid mx-auto d-block mt-5" width="800" height="600" controls>
                                 <source src="<%=not.getVideos()%>" type="video/mp4">
                             </video>
-
+                            <%}%>
                         <div class="dropdown-divider dp_div2"></div>
                         <p>Categoría: <%=not.getCategory()%></p>
                     </div>
@@ -109,24 +109,33 @@
                             </form>
                         </div>
                         <div class="dropdown-divider dp_div2 col-12"></div>
+                        
+
+                            <div class="col-12">
+                                <h2 class="text-center mt-2"> Puntuación: <%=not.getRate()%> </h2>
+                            </div>
+                        
+                    </div>
+                    <%} else {%>
+                    <div class="card-news rounded row">
+
                         <div class="col-12">
                             <h2 class="text-center mt-2"> Puntuación: <%=not.getRate()%> </h2>
                         </div>
-
                     </div>
                     <%}%>
-
-
                     <div class="card-news rounded">
 
                         <h5 class="text-center">Autor: <h2 class="text-center"><%=not.getAutor()%></h2></h5>
 
                     </div>
 
+
                 </div>
                 <!-- Comentarios -->
                 <div class="container row mx-auto d-flex">
                     <div class="col-12 card-news rounded">
+                        <% if (session.getAttribute("userType").equals("R") || session.getAttribute("userType").equals("A") || session.getAttribute("userType").equals("0")) {%>
                         <h4>¡Comentarios!</h4>
                         <div class="container pb-cmnt-container">
                             <div class="row">
@@ -143,6 +152,7 @@
                                 </div>
                             </div>
                         </div>
+                        <%}%>
                         <!-- Comentarios individuales -->
                         <div class="ind-com row">
                             <% for (comment Comentario : comentarios) {
@@ -157,30 +167,30 @@
                                         <p class="media-comment">
                                             <%=Comentario.getBody()%>
                                         </p>
-                                        <p style="font-size: 1.15vh;">
-                                            Puntaje: 
-                                        </p>
                                         <div class="col-12 ">
-                                        <button type="button" id="responder<%=contador%>" class="btn btn-info">Ver respuestas</button>
-                                        <div id="escribirRespuesta<%=contador%>" class=" bg-secondary border rounded p-3 allReplies " style="display: none;">
-                                            <form action="ReplyController" method="POST">
-                                                
-                                        <textarea placeholder="¡Comparte algo con los demás! :)" class="mt-3 pb-cmnt-textarea" name="respuesta" style="height:100px;" required></textarea>
-                                        <button type="submit" class="btn btn-success ml-auto d-flex">Responder</button>
-                                        <textarea name="idCommentforReply" style="display:none;"><%=Comentario.getId()%></textarea>
-                                        <textarea name="idNoticia" style="display:none;"><%=not.getId()%></textarea>
-                                        </form>
-                                        <%  for (comment replies : todasRespuestas) {
-                                            if(replies.getIdCommentToReply() == Comentario.getId()){
-                                        %>
-                                        <div class="col-12 pt-2  mt-3 rounded border border-dark bg-white" style="">
-                                        <h5 class="media-heading text-uppercase reviews"><%=replies.getNameUser()%> </h5>
-                                        <p class="media-comment">
-                                            <%=replies.getBody()%>
-                                        </p>
-                                        </div>
-                                        <%}}%>
-                                        </div>
+                                            <button type="button" id="responder<%=contador%>" class="btn btn-info">Ver respuestas</button>
+                                            <div id="escribirRespuesta<%=contador%>" class=" bg-secondary border rounded p-3 allReplies " style="display: none;">
+                                                <% if (session.getAttribute("userType").equals("R") || session.getAttribute("userType").equals("A") || session.getAttribute("userType").equals("0")) {%>
+                                                <form action="ReplyController" method="POST">
+
+                                                    <textarea placeholder="¡Comparte algo con los demás! :)" class="mt-3 pb-cmnt-textarea" name="respuesta" style="height:100px;" required></textarea>
+                                                    <button type="submit" class="btn btn-success ml-auto d-flex">Responder</button>
+                                                    <textarea name="idCommentforReply" style="display:none;"><%=Comentario.getId()%></textarea>
+                                                    <textarea name="idNoticia" style="display:none;"><%=not.getId()%></textarea>
+                                                </form>
+                                                <%}%>
+                                                <%  for (comment replies : todasRespuestas) {
+                                                        if (replies.getIdCommentToReply() == Comentario.getId()) {
+                                                %>
+                                                <div class="col-12 pt-2  mt-3 rounded border border-dark bg-white" style="">
+                                                    <h5 class="media-heading text-uppercase reviews"><%=replies.getNameUser()%> </h5>
+                                                    <p class="media-comment">
+                                                        <%=replies.getBody()%>
+                                                    </p>
+                                                </div>
+                                                <%}
+                                                    }%>
+                                            </div>
                                         </div>
                                     </div>              
                                 </div>

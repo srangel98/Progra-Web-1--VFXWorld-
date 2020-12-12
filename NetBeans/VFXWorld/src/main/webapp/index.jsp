@@ -15,6 +15,8 @@
 <%
     List<category> categories = (List<category>) request.getAttribute("Categories");
     List<news> approvedNews = (List<news>) request.getAttribute("allNews");
+    List<news> besthree = (List<news>) request.getAttribute("topthree");
+    int contador = 0;
 %>
 <!DOCTYPE html>
 
@@ -55,27 +57,24 @@
                     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
+                    
+                    <%
+                    for (news mejoresTres : besthree) {
+                        contador++;
+                        if(contador == 1){
+                %>
+                    
                     <div class="carousel-item active">
-                        <img src="Imagenes/P1.jpg" class="d-block w-100" alt="...">
+                        <%} else{%>
+                        <div class="carousel-item">
+                        <%}%>
+                        <img src="<%=mejoresTres.getHeaderImage()%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-md-block">
-                            <h5>VFXShow 250:</h5>
-                            <p>Raised by wolves</p>
+                            <h5><%=mejoresTres.getTitle()%></h5>
+                            <p><%=mejoresTres.getDescription()%></p>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="Imagenes/P2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-md-block">
-                            <h5>The One and Only</h5>
-                            <p>Ivan at MPC</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="Imagenes/P3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-md-block">
-                            <h5>Tangent Animation Scales </h5>
-                            <p>with Virtual Workstations on AWS</p>
-                        </div>
-                    </div>
+                    <%}%>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -87,6 +86,7 @@
                 </a>
             </div>
         </div>
+
         <!-- Noticias recientes (banner) -->
         <div class="container">
             <div class="banner border border-dark">
@@ -122,11 +122,7 @@
             </div>
 
         </div>
-        <!-- Noticias recientes (Botón) -->
-        <div class="btn-lastnews">
-            <a class="btn btn-secondary" href="lista-noticias.html" role="button" target="_blank">Ver más</a>
 
-        </div>
 
 
         <div class="container">
@@ -139,21 +135,21 @@
             <div class="row text-center">
                 <div class="col-lg-4">
                     <img src="Imagenes/after-effects.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                    <h2 class="text-white">Heading</h2>
-                    <p class="lastnews-body">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                    <h2 class="text-white">After Effects</h2>
+                    <p class="lastnews-body">Adobe After Effects es una aplicación que tiene forma de estudio destinado para la creación o aplicación en una composición, así como realización de gráficos profesionales en movimiento y efectos especiales.</p>
+                    <p><a class="btn btn-secondary" href="https://www.adobe.com/mx/products/aftereffects.html" target="_blank" role="button">Obtener</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img src="Imagenes/da-vinci-resolve.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                    <h2 class="text-white">Heading</h2>
-                    <p class="lastnews-body">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                    <h2 class="text-white">DaVinci Resolve</h2>
+                    <p class="lastnews-body">DaVinci Resolve es un software de edición de video no lineal desarrollado por Blackmagic Design. Su versión más reciente es DaVinci Resolve 16 la cual funciona en ordenadores personales con sistema operativo Windows, Mac OS X y Linux, aunque no en Android.</p>
+                    <p><a class="btn btn-secondary" href="https://www.blackmagicdesign.com/mx/products/davinciresolve/" target="_blank" role="button">Obtener</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img src="Imagenes/cinema-4d-logo.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                    <h2 class="text-white">Heading</h2>
-                    <p class="lastnews-body">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                    <h2 class="text-white">Cinema 4D</h2>
+                    <p class="lastnews-body">Cinema 4D es un software de creación de gráficos y animación 3D desarrollado originariamente para Commodore Amiga por la compañía alemana Maxon, y portado posteriormente a plataformas Windows y Macintosh.</p>
+                    <p><a class="btn btn-secondary" href="https://www.maxon.net/en/cinema-4d" target="_blank" role="button">Obtener</a></p>
                 </div><!-- /.col-lg-4 -->
             </div>
         </div>

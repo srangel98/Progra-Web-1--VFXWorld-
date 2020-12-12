@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Registrarse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
           String username = request.getParameter("user");
           String pass = request.getParameter("password");
           String email = request.getParameter("email");
@@ -32,10 +34,13 @@ public class Registrarse extends HttpServlet {
           
 
         if(userDAO.signInUser(User)==1){
+           
             response.sendRedirect("MainPageController");
 
         } else {
-            response.sendRedirect("error.jsp");
+            
+            
+            response.sendRedirect("MainPageController");
         }
     }
 

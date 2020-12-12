@@ -15,7 +15,7 @@
 
          <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark georgiaNTR">
-  <a class="navbar-brand ml-5" href="#">
+  <a class="navbar-brand ml-5" href="MainPageController">
     <img src="Imagenes/VFX-World.png" class="img-fluid" width="40" height="47" alt="" loading="lazy" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,9 @@
   </button>
 
   <ul class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0" action="BrowseNewController" method="GET">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Noticia" name="buscar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
     <ul class="navbar-nav ml-auto mr-5 my-3">
         <% if(session.getAttribute("name") == null) { %>
@@ -77,20 +77,22 @@
             </div>
       </li>
       <%}%>
-      <li class="nav-item active mr-5">
-        <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
+      <li class="nav-item mr-5">
+        <a class="nav-link" href="MainPageController">Principal <span class="sr-only">(current)</span></a>
       </li>
      
-      <li class="nav-item dropdown mr-5">
+      <li class="nav-item dropdown mr-5 ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Categorías
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
             <%
                 for(category Category : categories){
             %>
-          <a class="dropdown-item" href="#"><%= Category.getName()%></a>
+            <form action="BrowseCategoryController" method="POST">
+            <button type="submit" name="browseByCategory" class="btn btn-secondary mx-auto d-flex" value="<%= Category.getName()%>" ><%= Category.getName()%></button>
+            </form>
           <%
               }
             %>
@@ -116,7 +118,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Nombre de Usuario</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="user">
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="user" required pattern=".{3,}" title="Mínimo 3 caracteres">
           </div>
 
           <div class="input-group mb-3">
@@ -130,7 +132,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="">Contraseña</span>
             </div>
-            <input type="text" class="form-control" name="password">
+            <input type="password" class="form-control" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Necesitas al menos una mayúscula, minúscula, un número y un mínimo de 8 caracteres">
           </div>
 
         </div>
